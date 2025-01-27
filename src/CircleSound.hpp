@@ -20,18 +20,22 @@ public:
     int numCircles;
     float speed = 0;
     float startX;
+    float centerY;
     
-    CircleSound(float radius, float padding, vector<bool> circleExists) {
+    CircleSound(float radius, float padding, float centerY, vector<bool> circleExists) {
         this->radius = radius;
         this->padding = padding;
         this->circleExists = circleExists;
         this->numCircles = (int)circleExists.size();
         this->margin = (width - 2. * radius * numCircles - padding * 2.) / (numCircles + 1);
-        this->startX = padding + margin;
+        this->startX = padding + margin + radius * 0.5;
+        this->centerY = centerY;
     }
     
     void update(float speed) {
         this->speed = speed;
+        
+        startX += speed;
     }
     
     float formatX(float x) {
@@ -45,10 +49,6 @@ public:
     }
     
     void draw() {
-        startX += speed;
-        
-        float centerY = ofGetHeight() / 2;             // 縦方向の中央
-
         // 横一列に円を描画
         for (int i = 0; i < numCircles; i++) {
             if (circleExists[i]) {

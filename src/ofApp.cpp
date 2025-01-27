@@ -3,12 +3,15 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
     padding = ofGetWidth() / 10;
+    circleRadius = ofGetWidth() / 40;
     soundTimingLine = new SoundTimingLine(padding);
-    circleSound1 = new CircleSound(20, padding, {1,1,0,1,1,0,1,0,1,1,0,1});
+    circleSound1Y = ofGetHeight() / 2;
+    circleSound1 = new CircleSound(circleRadius, padding, circleSound1Y, {1,1,0,1,1,0,1,0,1,1,0,1});
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
+    soundTimingLine->update(0.);
     circleSound1->update(0.);
 }
 

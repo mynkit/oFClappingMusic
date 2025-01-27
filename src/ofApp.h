@@ -25,7 +25,9 @@ public:
 
     SoundTimingLine * soundTimingLine;
     CircleSound * circleSound1;
+    float circleSound1Y;
     
     float padding;
+    float circleRadius;
     
 };
