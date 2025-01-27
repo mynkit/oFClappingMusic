@@ -7,14 +7,14 @@ void ofApp::setup(){
     soundTimingLine = new SoundTimingLine(padding);
     circleSound1Y = 1. * ofGetHeight() / 3.;
     circleSound2Y = 2. * ofGetHeight() / 3.;
-    circleSound1 = new CircleSound(circleRadius, padding, circleSound1Y, {1,1,0,1,1,0,1,0,1,1,0,1});
-    circleSound2 = new CircleSound(circleRadius, padding, circleSound2Y, {1,1,0,1,1,0,1,0,1,1,0,1});
+    circleSound1 = new CircleSound(circleRadius, padding, circleSound1Y, {1,1,0,1,1,0,1,0,1,1,0,1}, &soundTimingLine->x);
+    circleSound2 = new CircleSound(circleRadius, padding, circleSound2Y, {1,1,0,1,1,0,1,0,1,1,0,1}, &soundTimingLine->x);
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
     soundTimingLine->update(2);
-    circleSound1->update(0.);
+    circleSound1->update(-1.);
     circleSound2->update(0.);
 }
 

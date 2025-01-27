@@ -21,8 +21,9 @@ public:
     float speed = 0;
     float startX;
     float centerY;
+    float * soundTimingLineX;
     
-    CircleSound(float radius, float padding, float centerY, vector<bool> circleExists) {
+    CircleSound(float radius, float padding, float centerY, vector<bool> circleExists, float * soundTimingLineX) {
         this->radius = radius;
         this->padding = padding;
         this->circleExists = circleExists;
@@ -30,6 +31,7 @@ public:
         this->margin = (width - 2. * radius * numCircles - padding * 2.) / (numCircles + 1);
         this->startX = padding + margin + radius * 0.5;
         this->centerY = centerY;
+        this->soundTimingLineX = soundTimingLineX;
     }
     
     void update(float speed) {
@@ -52,13 +54,17 @@ public:
     void draw() {
         // 横一列に円を描画
         ofPushStyle();
-        ofNoFill();
         ofSetLineWidth(2.5);
         for (int i = 0; i < numCircles; i++) {
             if (circleExists[i]) {
                 float x = startX + i * (2 * radius) + (i+1)*margin; // 各円のX座標
                 x = formatX(x);
                 ofSetColor(0, 0, 0);
+                if(*soundTimingLineX>=x && *soundTimingLineX<x+radius) {
+                    ofFill();
+                } else {
+                    ofNoFill();
+                }
                 ofDrawCircle(x, centerY, radius);
             }
         }
