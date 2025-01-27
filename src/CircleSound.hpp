@@ -36,6 +36,7 @@ public:
         this->speed = speed;
         
         startX += speed;
+        startX = formatX(startX);
     }
     
     float formatX(float x) {

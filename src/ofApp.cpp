@@ -5,14 +5,17 @@ void ofApp::setup(){
     padding = ofGetWidth() / 10;
     circleRadius = ofGetWidth() / 40;
     soundTimingLine = new SoundTimingLine(padding);
-    circleSound1Y = ofGetHeight() / 2;
+    circleSound1Y = 1. * ofGetHeight() / 3.;
+    circleSound2Y = 2. * ofGetHeight() / 3.;
     circleSound1 = new CircleSound(circleRadius, padding, circleSound1Y, {1,1,0,1,1,0,1,0,1,1,0,1});
+    circleSound2 = new CircleSound(circleRadius, padding, circleSound2Y, {1,1,0,1,1,0,1,0,1,1,0,1});
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
-    soundTimingLine->update(0.);
+    soundTimingLine->update(2);
     circleSound1->update(0.);
+    circleSound2->update(0.);
 }
 
 //--------------------------------------------------------------
@@ -22,6 +25,7 @@ void ofApp::draw(){
     soundTimingLine->draw();
     
     circleSound1->draw();
+    circleSound2->draw();
     
     ofSetColor(250);
     ofDrawRectangle(0, 0, padding, ofGetHeight());
