@@ -40,7 +40,7 @@ public:
     
     void draw() {
         ofSetColor(0);
-        ofSetLineWidth(5);
+        ofSetLineWidth(3);
         float newX = formatX(x);
         ofDrawLine(newX, padding, newX, ofGetHeight()-padding);
     }

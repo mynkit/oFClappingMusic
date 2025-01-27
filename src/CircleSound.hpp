@@ -51,6 +51,9 @@ public:
     
     void draw() {
         // 横一列に円を描画
+        ofPushStyle();
+        ofNoFill();
+        ofSetLineWidth(2.5);
         for (int i = 0; i < numCircles; i++) {
             if (circleExists[i]) {
                 float x = startX + i * (2 * radius) + (i+1)*margin; // 各円のX座標
@@ -59,5 +62,6 @@ public:
                 ofDrawCircle(x, centerY, radius);
             }
         }
+        ofPopStyle();
     }
 };
