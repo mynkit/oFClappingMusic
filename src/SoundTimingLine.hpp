@@ -8,7 +8,6 @@
 #pragma once
 
 #include "ofMain.h"
-#include <stdio.h>
 
 class SoundTimingLine {
 public:
@@ -24,8 +23,7 @@ public:
     void update(float speed) {
         this->speed = speed;
         
-        this->x += speed;
-        x = formatX(x);
+        x = formatX(x + speed);
     }
     
     float formatX(float x) {
@@ -41,7 +39,6 @@ public:
     void draw() {
         ofSetColor(0);
         ofSetLineWidth(3);
-        float newX = formatX(x);
-        ofDrawLine(newX, padding, newX, ofGetHeight()-padding);
+        ofDrawLine(x, padding, x, ofGetHeight()-padding);
     }
 };

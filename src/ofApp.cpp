@@ -2,6 +2,8 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
+    ofSetFrameRate(60);
+    ofEnableSmoothing();
     padding = ofGetWidth() / 10;
     circleRadius = ofGetWidth() / 40;
     soundTimingLine = new SoundTimingLine(padding);
@@ -13,8 +15,8 @@ void ofApp::setup(){
 
 //--------------------------------------------------------------
 void ofApp::update(){
-    soundTimingLine->update(2);
-    circleSound1->update(-1.);
+    soundTimingLine->update(8);
+    circleSound1->update(0.);
     circleSound2->update(0.);
 }
 
